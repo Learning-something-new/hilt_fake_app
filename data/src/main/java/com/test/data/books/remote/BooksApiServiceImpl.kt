@@ -5,7 +5,9 @@ import com.test.domain.entity.Book
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class BooksApiServiceImpl @Inject constructor(){
 
     companion object {

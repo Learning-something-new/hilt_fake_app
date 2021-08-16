@@ -16,7 +16,7 @@ object BooksToPresentationMapper: Mapper<DockBook, Book> {
     }
 
     private fun constructImageUrl(coverId: Int): String {
-        return "http://covers.openlibrary.org/b/id/$coverId-S.jpg"
+        return "http://covers.openlibrary.org/b/id/$coverId-M.jpg"
     }
 
 }
