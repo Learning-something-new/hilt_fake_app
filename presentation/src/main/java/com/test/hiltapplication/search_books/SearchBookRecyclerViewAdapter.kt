@@ -2,9 +2,10 @@ package com.test.hiltapplication.search_books
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.test.domain.entity.Book
+import com.test.hiltapplication.R
 import com.test.hiltapplication.databinding.ItemBookBinding
 
 
@@ -14,7 +15,7 @@ class SearchBookRecyclerViewAdapter(
 
     private val values = values.toMutableList()
 
-    fun setNewData(items: List<Book>){
+    fun setNewData(items: List<Book>) {
         values.clear()
         values.addAll(items)
         notifyDataSetChanged()
@@ -38,13 +39,17 @@ class SearchBookRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: ItemBookBinding) : RecyclerView.ViewHolder(binding.root) {
-        private val titleView: TextView = binding.title
-        private val authorView: TextView = binding.author
+    inner class ViewHolder(private val binding: ItemBookBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Book) {
-            titleView.text = item.title
-            authorView.text = item.author
+            Glide.with(binding.root)
+                .load(item.coverUrl)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .into(binding.image)
+
+            binding.title.text = item.title
+            binding.author.text = item.authors.joinToString(separator = ", ")
         }
     }
 

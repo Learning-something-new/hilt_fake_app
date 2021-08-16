@@ -8,9 +8,9 @@ object BooksToPresentationMapper: Mapper<DockBook, Book> {
 
     override fun convert(obj: DockBook): Book {
        return Book(
-           author = obj.author ?: "????",
+           authors = obj.authors!!,
            title = obj.title,
-           subtitle = obj.subtitle ?: "?????",
+           subtitle = obj.subtitle ?: "",
            coverUrl = constructCoverUrl(obj.coverId)
        )
     }

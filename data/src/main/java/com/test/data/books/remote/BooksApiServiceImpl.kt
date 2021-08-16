@@ -20,6 +20,6 @@ class BooksApiServiceImpl {
         .create(BooksApi::class.java)
 
     suspend fun searchBooks(query: String): List<Book> {
-        return booksApi.getBooks(query).docBooks.map(BooksToPresentationMapper::convert)
+        return booksApi.getBooks(query).docBooks.filter { it.authors != null }.map(BooksToPresentationMapper::convert)
     }
 }
