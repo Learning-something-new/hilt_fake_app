@@ -6,27 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.test.data.books.BooksRepositoryImpl
-import com.test.data.books.remote.BooksApiServiceImpl
-import com.test.domain.books.FindBooksUseCase
 import com.test.domain.utils.Result
 import com.test.hiltapplication.databinding.FragmentSearchBooksBinding
-import kotlinx.coroutines.Dispatchers
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SearchBooksFragment : Fragment() {
 
     private var _binding: FragmentSearchBooksBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: SearchBooksViewModel by viewModels() {
-        val booksApi = BooksApiServiceImpl()
-        val findBooksUseCase = FindBooksUseCase(BooksRepositoryImpl(booksApi), Dispatchers.Default)
-        SearchBooksViewModelFactory(findBooksUseCase)
-    }
+//    private val viewModel: SearchBooksViewModel by viewModels() {
+//        val booksApi = BooksApiServiceImpl()
+//        val findBooksUseCase = FindBooksUseCase(BooksRepositoryImpl(booksApi), Dispatchers.Default)
+//        SearchBooksViewModelFactory(findBooksUseCase)
+//    }
+//
+    @Inject lateinit var viewModel: SearchBooksViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +46,7 @@ class SearchBooksFragment : Fragment() {
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = SearchBookRecyclerViewAdapter()
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
     }
 

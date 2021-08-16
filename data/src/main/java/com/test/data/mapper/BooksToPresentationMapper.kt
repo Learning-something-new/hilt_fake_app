@@ -11,11 +11,11 @@ object BooksToPresentationMapper: Mapper<DockBook, Book> {
            authors = obj.authors!!,
            title = obj.title,
            subtitle = obj.subtitle ?: "",
-           coverUrl = constructCoverUrl(obj.coverId)
+           imageUrl = constructImageUrl(obj.coverId)
        )
     }
 
-    private fun constructCoverUrl(coverId: Int): String {
+    private fun constructImageUrl(coverId: Int): String {
         return "http://covers.openlibrary.org/b/id/$coverId-S.jpg"
     }
 

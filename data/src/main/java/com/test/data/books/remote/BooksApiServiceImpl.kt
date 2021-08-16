@@ -4,8 +4,9 @@ import com.test.data.mapper.BooksToPresentationMapper
 import com.test.domain.entity.Book
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-class BooksApiServiceImpl {
+class BooksApiServiceImpl @Inject constructor(){
 
     companion object {
         private const val BASE_URL = "http://openlibrary.org/"

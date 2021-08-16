@@ -1,14 +1,16 @@
 package com.test.domain.books
 
+import com.test.domain.di.DefaultDispatcher
 import com.test.domain.entity.Book
 import com.test.domain.usecase.FlowUseCase
+import com.test.domain.utils.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import com.test.domain.utils.Result
+import javax.inject.Inject
 
-class FindBooksUseCase(
+class FindBooksUseCase @Inject constructor(
     private val booksRepository: BooksRepository,
-    dispatcher: CoroutineDispatcher
+    @DefaultDispatcher dispatcher: CoroutineDispatcher
 ) : FlowUseCase<String, List<Book>>(dispatcher) {
 
     override fun execute(parameters: String): Flow<Result<List<Book>>> {

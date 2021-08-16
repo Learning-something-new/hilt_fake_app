@@ -44,7 +44,7 @@ class SearchBookRecyclerViewAdapter(
 
         fun bind(item: Book) {
             Glide.with(binding.root)
-                .load(item.coverUrl)
+                .load(item.imageUrl)
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(binding.image)
 

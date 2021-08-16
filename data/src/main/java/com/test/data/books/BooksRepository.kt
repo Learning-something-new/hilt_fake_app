@@ -1,14 +1,14 @@
 package com.test.data.books
 
-import com.test.data.books.remote.BooksApi
 import com.test.data.books.remote.BooksApiServiceImpl
 import com.test.domain.books.BooksRepository
 import com.test.domain.entity.Book
-import kotlinx.coroutines.flow.Flow
 import com.test.domain.utils.Result
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class BooksRepositoryImpl(
+class BooksRepositoryImpl @Inject constructor(
     private val booksApi: BooksApiServiceImpl
 ): BooksRepository {
 
